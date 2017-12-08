@@ -84,7 +84,7 @@ function reset(){
 
 // checkLetters() function
 // It's where we will do all of the comparisons for matches.
-// Again, it's not being called here. It's just being made for future use.
+//  not being called here. It's just being made for future use.
 function checkLetters(letter) {
 
     //If the letter is in failArray, indexOf will return something
