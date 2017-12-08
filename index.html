@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Kat's Musical Hangman</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+</head>
+
+<body>
+    <div class="container">
+
+        <div id=content>
+
+
+
+            <div id="audiocontainer">
+                <input type="button" value="PLAY MUSIC" onclick="play()">
+                <audio id="audio" src="assets\audio\01 Magic to Do.mp3"></audio>
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-12">
+
+
+                </div>
+            </div>
+
+
+            <!-- first row -->
+            <div class="row">
+                <!-- one big column -->
+                <div class="col-md-12">
+
+
+                    <h1>Musical Theatre Hangman</h1>
+                </div>
+            </div>
+            <!-- second row  -->
+            <div class="row">
+                <!-- one big column -->
+                <div class="col-md-12">
+                    <h2> Press any key to audition!</h2>
+
+                </div>
+
+
+            </div>
+            <!-- third row 2 col 6 each -->
+            <div class="row">
+                <div id="rules"></div>
+                <!-- first column second row -->
+                <div class="col-md-6">
+
+
+                    <p> You got the Part!
+                        <div id="wins"></div>
+                    </p>
+
+                    <p> Don't call us, we'll call you.
+                        <div id="losses"></div>
+                    </p>
+                    <div class="linebreak"></div>
+                </div>
+                <!-- second column third row -->
+                <div class="col-md-6">
+                    <p> Guess this Musical.</p>
+                    <p id="word-blanks"></p>
+
+                    <p>
+                        <div id="guesses-left"></div>
+                    </p>
+
+                    <p> Letters already guessed</p>
+                    <p id="wrong-guesses"></p>
+                    <div class="linebreak"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/Javascript/game.js"></script>
+</body>
+
+</html>
