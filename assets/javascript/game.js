@@ -1,16 +1,13 @@
-// make Array of Word Options (all lowercase)
-var words = ["cats", "wicked", "rent", "oklahoma", "phantom", "matilda", "aladdin",
-    "evita", "cabaret", "tommy", "annie", "dreamgirls", "chicago", "fiddler", "pippin", "hair"];
-var guesses;
-var chosenWordArray = [];
-var numBlanks;
-var blanksAndSuccessesArray = [ ];
-var failArray = [];
-var guessArray = [];
-var numberOfGuesses = 10;
-var numWins = 0;
-var numLosses = 0;
-var chosenWord = "";
+// //make music play at open - 
+// get song - 
+
+// want music to play with relation 
+// to word need to find - cats is answer soen gfrom cats plays???
+// need to figure how to connect somgs to words
+
+
+
+
 
 
 function play(){
@@ -18,6 +15,25 @@ function play(){
     var audio = document.getElementById("audio");  
     audio.play();
 }
+
+
+
+// make Array of Word Options (all lowercase)
+var words = ["cats", "wicked", "rent", "oklahoma", "phantom", "matilda", "aladdin",
+    "evita", "cabaret", "tommy", "annie", "dreamgirls", "chicago", "fiddler", "pippin", "hair"];
+var guesses;
+var wordArr = [];
+var dashes;
+var dashWordArr = [ ];
+var wrgArr = [];
+var guessArray = [];
+var numberOfGuesses = 10;
+var numWins = 0;
+var numLosses = 0;
+var wordPick = "";
+
+
+
 
 // starts adn restarts game.
 // 
@@ -29,40 +45,40 @@ function startGame() {
 
     // chosen word is chosen randomly from words. 
     var index = Math.floor((Math.random() * words.length));
-    chosenWord = words[index];
+    wordPick = words[index];
     
 
 
 
     // word becomes list of letters
-    for (var i = 0; i < chosenWord.length; i++) {
-        chosenWordArray.push(chosenWord[i]);
+    for (var i = 0; i < wordPick.length; i++) {
+        wordArr.push(wordPick[i]);
     }
 
     // count the number of letters in the word
-    numBlanks = chosenWord.length;
+    dashes = wordPick.length;
    
 
     // Fill up the blanksAndSuccesses list with appropriate number of blanks.
     // This is based on number of letters in solution.
-    for (var i = 0; i < numBlanks; i++) {
+    for (var i = 0; i < dashes; i++) {
         // make a list of `_`
         // ex dog = ['d', 'o','g'] and generate a new array like ['_', '_', '_']
-        blanksAndSuccessesArray.push("_");
+        dashWordArr.push("_");
     }
 
     
 }
 
 function reset(){
-    chosenWord = "";
-    chosenWordArray = [];
+    wordPick = "";
+    wordArr = [];
 
     // reset the guess and success array at each round. Array of letters (first array, for succesful guesses)
-    blanksAndSuccessesArray = [];
+    dashWordArr = [];
     guessArray = [];
     // reset the wrong guesses from the previous round. Array of letters (second arrays, one for fails)
-    failArray = [];
+    wrgArr = [];
 
 
 // update html on the page
@@ -72,7 +88,7 @@ function reset(){
 
     // set #word-blanks to the blanks at the beginning of each round in the HTML
     var wordBlanks = document.getElementById("word-blanks");
-    wordBlanks.innerHTML = blanksAndSuccessesArray.join("");
+    wordBlanks.innerHTML = dashWordArr.join("");
 
     // set #wrong-guesses to empty / clears the wrong guesses from the previous round by
     var wrongGuesses = document.getElementById("wrong-guesses");
@@ -87,17 +103,17 @@ function reset(){
 //  not being called here. It's just being made for future use.
 function checkLetters(letter) {
 
-    //If the letter is in failArray, indexOf will return something
+    //If the letter is in wrgArr, indexOf will return something
     //other than -1
-    if (failArray.indexOf(letter) != -1){
+    if (wrgArr.indexOf(letter) != -1){
         return;  //Exit the function
     }
 
 
     var letterInWord = false;
     // Check if a letter exists inside the array at all. (by looping thru the word as an array)
-    for (var i = 0; i < numBlanks; i++) {
-        if (letter === chosenWordArray[i]) {
+    for (var i = 0; i < dashes; i++) {
+        if (letter === wordArr[i]) {
             // If the letter exists then toggle this boolean to true. This will be used in the next step.
             letterInWord = true;
         }
@@ -107,18 +123,18 @@ function checkLetters(letter) {
     if (letterInWord === true) {
         // Loop through the word, one letter at a time
         // add to blanksAndSuccesses with every instance of the letter.
-        for (var i = 0; i < chosenWordArray.length; i++){
-            // if chosenWord letter is the same as letter
-            if (chosenWordArray[i] === letter) {
+        for (var i = 0; i < wordArr.length; i++){
+            // if wordPick letter is the same as letter
+            if (wordArr[i] === letter) {
                 // Here we set the specific space in blanks and letter equal to the letter when there is a match.
-                blanksAndSuccessesArray[i] = letter;
+                dashWordArr[i] = letter;
 
             }
         }
 
     } else {// If the letter doesn't exist at all...
         // ..then we add the letter to the list of wrong letters, and we subtract one of the guesses.
-        failArray.push(letter);
+        wrgArr.push(letter);
         guesses++;
     }
 }
@@ -138,15 +154,15 @@ function roundComplete() {
     guessesLeft.innerHTML = "<p>Number of Guesses = " + guesses + "</p><p>Guesses remaining = " + (numberOfGuesses - guesses) + "</p>";
     // Update #word-blanks to show any correct guesses
     var wordBlanks = document.getElementById("word-blanks");
-    wordBlanks.innerHTML = blanksAndSuccessesArray.join(" ");
+    wordBlanks.innerHTML = dashWordArr.join(" ");
 
     // Update #wrong-guesses to show the wrong guesses
     var wrongGuesses = document.getElementById("wrong-guesses");
-    wrongGuesses.innerHTML = failArray.join(", ");
+    wrongGuesses.innerHTML = wrgArr.join(", ");
 
     // If we have gotten all the letters to match the solution...
-    var word = blanksAndSuccessesArray.join("");
-    var secretWord = chosenWord;
+    var word = dashWordArr.join("");
+    var secretWord = wordPick;
     if (word === secretWord){
         // ..add to the win counter & give the user an alert. - need to add prunt last letter
         numWins++;
