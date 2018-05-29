@@ -1,34 +1,11 @@
 # Hangman-Game
 
-"psudo code"
+## A musical theatre hangman game - Click any button to Start
+![video](https://user-images.githubusercontent.com/32774089/40668921-bc05dac4-6333-11e8-89c6-dd7fdecfd0c4.gif)
 
-list of words
+# Using Javascript and HTML and CSS 
 
-pick them at random
+Simply click any button and begin guessing
+![Screen Shot](assets/images/scrn.gif)
 
-count the number of letters in word to make dashes - in clue line
-
-set up counter for guesses - wins and losses
-
-event listeners - click to start - click to restart?
-
-function to compare guessed letters with letters in answer
-
-function to compare words with answer
-
-alert to win and alert (or something) to lose
-
-
-
-
-in js - add alert name and prompt what is name - so tony goes to ..
-
-        make wins and losses show on html - aslo console log says not adding up
-
-        no dashes if should be a space
-
-        finish entering last letter before win alert pops
-
-        song start on open page
-        get song
-        
+The Player has 10 incorrect guesses before the game is lost.
